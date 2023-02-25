@@ -253,26 +253,29 @@ set(libc++abi_include_dir "${libwebrtc_source_dir}/src/buildtools/third_party/li
 # catch2
 # -----------------------------------------------------------------------------
 
-ExternalProject_Add(
-  project_catch2
+# catch2 is only needed on Debug builds
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+  ExternalProject_Add(
+    project_catch2
 
-  GIT_REPOSITORY    https://github.com/catchorg/Catch2.git
-  GIT_TAG           a1cdff4f188170c5b0aa3d5d217b60d821f237df
+    GIT_REPOSITORY    https://github.com/catchorg/Catch2.git
+    GIT_TAG           a1cdff4f188170c5b0aa3d5d217b60d821f237df
 
-  PREFIX            ${CMAKE_BINARY_DIR}/external/catch2/prefix
-  TMP_DIR           ${CMAKE_BINARY_DIR}/external/catch2/tmp
-  STAMP_DIR         ${CMAKE_BINARY_DIR}/external/catch2/stamp
-  DOWNLOAD_DIR      ${CMAKE_BINARY_DIR}/external/catch2/download
-  SOURCE_DIR        ${CMAKE_BINARY_DIR}/external/catch2/src
-  BINARY_DIR        ${CMAKE_BINARY_DIR}/external/catch2/build
+    PREFIX            ${CMAKE_BINARY_DIR}/external/catch2/prefix
+    TMP_DIR           ${CMAKE_BINARY_DIR}/external/catch2/tmp
+    STAMP_DIR         ${CMAKE_BINARY_DIR}/external/catch2/stamp
+    DOWNLOAD_DIR      ${CMAKE_BINARY_DIR}/external/catch2/download
+    SOURCE_DIR        ${CMAKE_BINARY_DIR}/external/catch2/src
+    BINARY_DIR        ${CMAKE_BINARY_DIR}/external/catch2/build
 
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND     ""
-  INSTALL_COMMAND   ""
-)
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND     ""
+    INSTALL_COMMAND   ""
+  )
 
-ExternalProject_Get_Property(project_catch2 SOURCE_DIR)
-set(catch2_install_dir ${SOURCE_DIR})
+  ExternalProject_Get_Property(project_catch2 SOURCE_DIR)
+  set(catch2_install_dir ${SOURCE_DIR})
+endif()
 
 # node-webrtc
 # -----------------------------------------------------------------------------
