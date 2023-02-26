@@ -14,6 +14,7 @@ ExternalProject_Add(
 
   GIT_REPOSITORY    https://chromium.googlesource.com/chromium/tools/depot_tools.git
   GIT_TAG           2fddb95698211db1373ebe2b16091a54eac51c9c
+  GIT_PROGRESS      true
 
   PREFIX            ${CMAKE_BINARY_DIR}/external/depot_tools/prefix
   TMP_DIR           ${CMAKE_BINARY_DIR}/external/depot_tools/tmp
@@ -260,6 +261,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     GIT_REPOSITORY    https://github.com/catchorg/Catch2.git
     GIT_TAG           a1cdff4f188170c5b0aa3d5d217b60d821f237df
+    GIT_PROGRESS      true
 
     PREFIX            ${CMAKE_BINARY_DIR}/external/catch2/prefix
     TMP_DIR           ${CMAKE_BINARY_DIR}/external/catch2/tmp
@@ -501,6 +503,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     GIT_REPOSITORY      https://github.com/Bareflank/astyle.git
     GIT_TAG             v1.2
     GIT_SHALLOW         true
+    GIT_PROGRESS        true
     CMAKE_ARGS          ${ASTYLE_CMAKE_ARGS}
     PREFIX              ${CMAKE_BINARY_DIR}/external/astyle/prefix
     TMP_DIR             ${CMAKE_BINARY_DIR}/external/astyle/tmp
