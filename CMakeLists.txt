@@ -42,38 +42,42 @@ add_dependencies(libc++ libwebrtc)
 
 set(libc++_objects
   algorithm.o
-  any.o
+  atomic.o
   bind.o
-  charconv.o
   chrono.o
-  condition_variable.o
   condition_variable_destructor.o
-  debug.o
   exception.o
-  functional.o
   future.o
+  ios.instantiations.o
+  iostream.o
+  memory.o
+  mutex_destructor.o
+  optional.o
+  random_shuffle.o
+  shared_mutex.o
+  string.o
+  system_error.o
+  typeinfo.o
+  valarray.o
+  vector.o
+  any.o
+  barrier.o
+  charconv.o
+  condition_variable.o
+  debug.o
+  functional.o
   hash.o
   ios.o
-  iostream.o
   locale.o
-  memory.o
   mutex.o
-  mutex_destructor.o
   new.o
-  optional.o
   random.o
   regex.o
-  shared_mutex.o
   stdexcept.o
-  string.o
   strstream.o
-  system_error.o
   thread.o
-  typeinfo.o
   utility.o
-  valarray.o
   variant.o
-  vector.o
 )
 list(TRANSFORM libc++_objects PREPEND ${libwebrtc_binary_dir}/obj/buildtools/third_party/libc++/libc++/)
 
@@ -102,7 +106,7 @@ set(libc++abi_objects
   cxa_guard.o
   cxa_handlers.o
   cxa_personality.o
-  cxa_unexpected.o
+  cxa_thread_atexit.o
   cxa_vector.o
   cxa_virtual.o
   fallback_malloc.o
