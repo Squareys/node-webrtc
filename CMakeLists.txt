@@ -82,6 +82,10 @@ set(libc++_objects
 list(TRANSFORM libc++_objects PREPEND ${libwebrtc_binary_dir}/obj/buildtools/third_party/libc++/libc++/)
 
 set_property(TARGET libc++ APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
+# We need to include the directory in which __config_site is generated, but it will be generated during
+# the build process and doesn't exist when CMake validates the include directories.
+# To workaround CMake configuration failure, we create an empty directory here.
+file(MAKE_DIRECTORY "${libwebrtc_src_dir}/buildtools/third_party/libc++")
 set_property(TARGET libc++ APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${libwebrtc_src_dir}/buildtools/third_party/libc++")
 set_target_properties(libc++ PROPERTIES IMPORTED_OBJECTS_DEBUG "${libc++_objects}" IMPORTED_OBJECTS "${libc++_objects}")
 
