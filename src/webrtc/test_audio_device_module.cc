@@ -87,13 +87,13 @@ class TestAudioDeviceModuleImpl  // NOLINT
         rtc::CritScope cs(&lock_);
         stop_thread_ = true;
       }
-      thread_->Finalize();
+      thread_.Finalize();
     }
   }
 
   int32_t Init() override {
     thread_ = rtc::PlatformThread::SpawnJoinable(
-            [this]() { this->Run(); }, "TestAudioDeviceModuleImpl",
+            [this]() { this->ProcessAudio(); }, "TestAudioDeviceModuleImpl",
             rtc::ThreadAttributes{rtc::ThreadPriority::kHigh});
     return 0;
   }
@@ -228,10 +228,6 @@ class TestAudioDeviceModuleImpl  // NOLINT
         }
       }
     }
-  }
-
-  static void Run(void* obj) {
-    static_cast<TestAudioDeviceModuleImpl*>(obj)->ProcessAudio();
   }
 
   const std::unique_ptr<Capturer> capturer_ RTC_GUARDED_BY(lock_);
