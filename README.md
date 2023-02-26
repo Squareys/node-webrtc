@@ -41,7 +41,7 @@ The following platforms are confirmed to work with node-webrtc and have prebuilt
   </thead>
   <tbody>
     <tr>
-      <th rowspan="6">Node</th>
+      <th rowspan="7">Node</th>
       <th>8</th>
         <td align="center">✓</td>
         <td align="center">✓</td>
