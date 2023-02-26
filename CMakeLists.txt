@@ -82,6 +82,7 @@ set(libc++_objects
 list(TRANSFORM libc++_objects PREPEND ${libwebrtc_binary_dir}/obj/buildtools/third_party/libc++/libc++/)
 
 set_property(TARGET libc++ APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
+set_property(TARGET libc++ APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${libwebrtc_src_dir}/buildtools/third_party/libc++")
 set_target_properties(libc++ PROPERTIES IMPORTED_OBJECTS_DEBUG "${libc++_objects}" IMPORTED_OBJECTS "${libc++_objects}")
 
 # NOTE(mroberts): I would like this to be INTERFACE.
@@ -129,7 +130,7 @@ set_target_properties(libc++abi PROPERTIES IMPORTED_OBJECTS_DEBUG "${libc++abi_o
 # libwebrtc
 # -----------------------------------------------------------------------------
 
-set(WEBRTC_REVISION branch-heads/4500)
+set(WEBRTC_REVISION branch-heads/4600)
 
 list(APPEND GN_GEN_ARGS
   rtc_build_examples=false
