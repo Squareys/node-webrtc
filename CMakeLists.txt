@@ -13,7 +13,7 @@ ExternalProject_Add(
   project_depot_tools
 
   GIT_REPOSITORY    https://chromium.googlesource.com/chromium/tools/depot_tools.git
-  GIT_TAG           2fddb95698211db1373ebe2b16091a54eac51c9c
+  GIT_TAG           af45aa86aced54e87d3a5f061b504fd486694a27
   GIT_PROGRESS      true
 
   PREFIX            ${CMAKE_BINARY_DIR}/external/depot_tools/prefix
@@ -134,7 +134,7 @@ set_target_properties(libc++abi PROPERTIES IMPORTED_OBJECTS_DEBUG "${libc++abi_o
 # libwebrtc
 # -----------------------------------------------------------------------------
 
-set(WEBRTC_REVISION branch-heads/4700)
+set(WEBRTC_REVISION branch-heads/4844)
 
 list(APPEND GN_GEN_ARGS
   rtc_build_examples=false
@@ -311,7 +311,7 @@ nodejs_init(${nodejs_init_args})
 
 file(GLOB_RECURSE MODULE_SRC src/*.cc src/*.h)
 add_nodejs_module(${MODULE} ${MODULE_SRC})
-set_property(TARGET ${MODULE} PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${MODULE} PROPERTY CXX_STANDARD 17)
 
 if(NOT iwyu_path STREQUAL "iwyu_path-NOTFOUND")
   set_property(TARGET ${MODULE} PROPERTY CXX_INCLUDE_WHAT_YOU_USE ${iwyu_path} -Xiwyu --mapping_file=${CMAKE_SOURCE_DIR}/.iwyu.imp)
