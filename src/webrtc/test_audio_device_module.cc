@@ -94,7 +94,7 @@ class TestAudioDeviceModuleImpl  // NOLINT
   int32_t Init() override {
     thread_ = absl::make_unique<rtc::PlatformThread>(
             TestAudioDeviceModuleImpl::Run, this, "TestAudioDeviceModuleImpl",
-            rtc::kHighPriority);
+            rtc::ThreadAttributes{rtc::kHighPriority});
     thread_->Start();
     return 0;
   }
